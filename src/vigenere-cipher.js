@@ -1,6 +1,10 @@
 const CustomError = require("../extensions/custom-error");
 
 class VigenereCipheringMachine {
+  constructor(flag = true) {
+    this.flag = flag;
+  }
+
   encrypt(message, key) {
     if (message == undefined || key == undefined) {
       throw new Error();
@@ -106,7 +110,12 @@ class VigenereCipheringMachine {
         result = result + arr1[i];
       }
     }
-    return result;
+    // return result;
+    if (this.flag) {
+      return result.toUpperCase();
+    } else {
+      return result.toUpperCase().split("").reverse().join("");
+    }
   }
   decrypt(message, key) {
     if (message == undefined || key == undefined) {
@@ -214,7 +223,12 @@ class VigenereCipheringMachine {
         result = result + arr1[i];
       }
     }
-    return result;
+    // return result;
+    if (this.flag) {
+      return result.toUpperCase();
+    } else {
+      return result.toUpperCase().split("").reverse().join("");
+    }
   }
 }
 
